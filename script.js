@@ -107,21 +107,30 @@ document.getElementById("Exitlogin").addEventListener("click", function() {
         var logEntry = "[" + timestamp + "] Name: " + nameVal + " | Email: " + emailVal;
         userLogs.push(logEntry);
 
-        // --- UPDATED NEW DISCORD WEBHOOK ENVELOPE ---
-        var trackingWebhookUrl = "https://discord.com/api/webhooks/1509956056736989355/vZ755HXqM7Upv_UFdhNRwbCgoYPyQF06jE5y0yYK8KjjU5JkGvBiFzjC_ZaE_SAcdIVd";
-        
-        var messageText = "📥 **New User Login Captured!**\n👤 **Name:** " + nameVal + "\n📧 **Email:** " + emailVal + "\n⏰ **Time:** " + timestamp;
+        // --- WEB3FORMS DATA TRANSMISSION ---
+        // CRITICAL: Paste your actual Web3Forms alphanumeric access token key here!
+        var formToken = "PASTE_YOUR_ACCESS_KEY_HERE"; 
 
-        // Clean standard JSON container structure
-        fetch(trackingWebhookUrl, {
+        fetch("https://web3forms.com", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Accept": "application/json"
             },
-            body: JSON.stringify({ content: messageText })
+            body: JSON.stringify({
+                access_key: formToken,
+                subject: "New Website Portal Login",
+                User_Name: nameVal,
+                User_Email: emailVal,
+                Login_Time: timestamp
+            })
         })
-        .then(function() { console.log("Webhook data delivered!"); })
-        .catch(function(err) { console.error("Transmission fault: ", err); });
+        .then(function() { 
+            console.log("Data logged securely to your Web3Forms dashboard."); 
+        })
+        .catch(function(err) { 
+            console.error("Submission failed: ", err); 
+        });
         // ---------------------------------------------------
 
         setScreen("screen1");
@@ -150,4 +159,3 @@ window.addEventListener("keydown", function(event) {
 document.getElementById("devBack").addEventListener("click", function() {
     setScreen("screen1");
 });
-
