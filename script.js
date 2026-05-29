@@ -107,9 +107,8 @@ document.getElementById("Exitlogin").addEventListener("click", function() {
         var logEntry = "[" + timestamp + "] Name: " + nameVal + " | Email: " + emailVal;
         userLogs.push(logEntry);
 
-        // --- WEB3FORMS DATA TRANSMISSION ---
-        // CRITICAL: Paste your actual Web3Forms alphanumeric access token key here!
-        var formToken = "PASTE_YOUR_ACCESS_KEY_HERE"; 
+        // --- FIXED: WEB3FORMS INTEGRATION WITH YOUR ACCESS KEY ---
+        var formToken = "b7b976f8-6492-4989-b4ac-76dbd74431ff"; 
 
         fetch("https://web3forms.com", {
             method: "POST",
@@ -159,3 +158,4 @@ window.addEventListener("keydown", function(event) {
 document.getElementById("devBack").addEventListener("click", function() {
     setScreen("screen1");
 });
+
