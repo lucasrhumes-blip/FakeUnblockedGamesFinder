@@ -28,118 +28,155 @@ setInterval(updateClock, 1000);
 
 // Helper function to handle screen switching seamlessly
 function setScreen(newScreenId) {
-    document.getElementById(currentScreen).classList.add("hidden");
-    document.getElementById(newScreenId).classList.remove("hidden");
-    currentScreen = newScreenId;
+    var oldScreen = document.getElementById(currentScreen);
+    var newScreen = document.getElementById(newScreenId);
+    
+    if (oldScreen && newScreen) {
+        oldScreen.classList.add("hidden");
+        newScreen.classList.remove("hidden");
+        currentScreen = newScreenId;
+    }
 }
 
 // ---------------------------------------------------------
 // BACKGROUND SLIDER SYSTEM
 // ---------------------------------------------------------
 setInterval(function() {
-    var r = document.getElementById("sliderR").value;
-    var g = document.getElementById("sliderG").value;
-    var b = document.getElementById("sliderB").value;
-    document.body.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+    var sliderR = document.getElementById("sliderR");
+    var sliderG = document.getElementById("sliderG");
+    var bSlider = document.getElementById("sliderB");
+    
+    if (sliderR && sliderG && bSlider) {
+        var r = sliderR.value;
+        var g = sliderG.value;
+        var b = bSlider.value;
+        document.body.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+    }
 }, 20);
 
 // ---------------------------------------------------------
 // SCREEN NAVIGATION HANDLERS
 // ---------------------------------------------------------
-document.getElementById("settingsBtn").addEventListener("click", function() {
-    setScreen("screen2");
-});
+var settingsBtn = document.getElementById("settingsBtn");
+if (settingsBtn) {
+    settingsBtn.addEventListener("click", function() {
+        setScreen("screen2");
+    });
+}
 
-document.getElementById("home").addEventListener("click", function() {
-    setScreen("loginScreen");
-});
+var homeBtn = document.getElementById("home");
+if (homeBtn) {
+    homeBtn.addEventListener("click", function() {
+        setScreen("loginScreen");
+    });
+}
 
-document.getElementById("home2").addEventListener("click", function() {
-    setScreen("screen1");
-});
+var home2Btn = document.getElementById("home2");
+if (home2Btn) {
+    home2Btn.addEventListener("click", function() {
+        setScreen("screen1");
+    });
+}
 
-document.getElementById("flappy").addEventListener("click", function() {
-    window.open("https://code.org", "_blank");
-});
+var flappyBtn = document.getElementById("flappy");
+if (flappyBtn) {
+    flappyBtn.addEventListener("click", function() {
+        window.open("https://code.org", "_blank");
+    });
+}
 
 // ---------------------------------------------------------
 // START APP BUTTON TIMER ANIMATION
 // ---------------------------------------------------------
-document.getElementById("Start").addEventListener("click", function() {
-    var startBtn = document.getElementById("Start");
-    var label1 = document.getElementById("label1");
-    
-    label1.innerText = "Initializing...";
-    startBtn.innerText = "Starting in 5s";
-    
-    setTimeout(function() { startBtn.innerText = "4s"; }, 1000);
-    setTimeout(function() { startBtn.innerText = "3s"; }, 2000);
-    setTimeout(function() { 
-        label1.innerText = "Website Found"; 
-        startBtn.innerText = "2s"; 
-    }, 3000);
-    setTimeout(function() { 
-        label1.innerText = "Make Sure to Allow Popups & Redirects"; 
-        startBtn.innerText = "1s"; 
-    }, 4000);
-    setTimeout(function() { startBtn.innerText = "0s"; }, 5000);
-    setTimeout(function() {
-        document.body.style.backgroundColor = "rgb(0,0,0)";
-        window.open("https://code.org", "_blank");
-    }, 6000);
-});
+var startBtn = document.getElementById("Start");
+if (startBtn) {
+    startBtn.addEventListener("click", function() {
+        var label1 = document.getElementById("label1");
+        
+        if (label1) label1.innerText = "Initializing...";
+        startBtn.innerText = "Starting in 5s";
+        
+        setTimeout(function() { startBtn.innerText = "4s"; }, 1000);
+        setTimeout(function() { startBtn.innerText = "3s"; }, 2000);
+        setTimeout(function() { 
+            if (label1) label1.innerText = "Website Found"; 
+            startBtn.innerText = "2s"; 
+        }, 3000);
+        setTimeout(function() { 
+            if (label1) label1.innerText = "Make Sure to Allow Popups & Redirects"; 
+            startBtn.innerText = "1s"; 
+        }, 4000);
+        setTimeout(function() { startBtn.innerText = "0s"; }, 5000);
+        setTimeout(function() {
+            document.body.style.backgroundColor = "rgb(0,0,0)";
+            window.open("https://code.org", "_blank");
+        }, 6000);
+    });
+}
 
 // ---------------------------------------------------------
 // VALIDATION AND DATA ENTRY SUBMISSION (ENTER BUTTON)
 // ---------------------------------------------------------
-document.getElementById("Exitlogin").addEventListener("click", function() {
-    // Reset warning highlights
-    document.getElementById("label10").classList.add("hidden");
-    document.getElementById("label11").classList.add("hidden");
-    document.getElementById("label9").classList.add("hidden");
+var exitLoginBtn = document.getElementById("Exitlogin");
+if (exitLoginBtn) {
+    exitLoginBtn.addEventListener("click", function() {
+        var label10 = document.getElementById("label10");
+        var label11 = document.getElementById("label11");
+        var label9 = document.getElementById("label9");
+        
+        // Reset warning highlights safely
+        if (label10) label10.classList.add("hidden");
+        if (label11) label11.classList.add("hidden");
+        if (label9) label9.classList.add("hidden");
 
-    var nameVal = document.getElementById("nameInput").value;
-    var emailVal = document.getElementById("emailInput").value;
-    var isChecked = document.getElementById("checkbox3").checked;
+        var nameInput = document.getElementById("nameInput");
+        var emailInput = document.getElementById("emailInput");
+        var checkbox3 = document.getElementById("checkbox3");
+        
+        if (!nameInput || !emailInput || !checkbox3) return;
 
-    if (isChecked && nameVal !== "" && emailVal !== "" && emailVal.includes("@")) {
-        var timestamp = new Date().toLocaleTimeString();
-        var logEntry = "[" + timestamp + "] Name: " + nameVal + " | Email: " + emailVal;
-        userLogs.push(logEntry);
+        var nameVal = nameInput.value;
+        var emailVal = emailInput.value;
+        var isChecked = checkbox3.checked;
 
-        // --- WEB3FORMS ROUTING FIXED INTERFACE ---
-        var formToken = "b7b976f8-6492-4989-b4ac-76dbd74431ff"; 
+        if (isChecked && nameVal !== "" && emailVal !== "" && emailVal.includes("@")) {
+            var timestamp = new Date().toLocaleTimeString();
+            var logEntry = "[" + timestamp + "] Name: " + nameVal + " | Email: " + emailVal;
+            userLogs.push(logEntry);
 
-        // FIXED: URL correctly updated to hit the endpoint handler instead of landing home screen
-        fetch("https://web3forms.com", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                access_key: formToken,
-                subject: "New Website Portal Login",
-                User_Name: nameVal,
-                User_Email: emailVal,
-                Login_Time: timestamp
+            // --- CORRECTED WEB3FORMS ENDPOINT ---
+            var formToken = "b7b976f8-6492-4989-b4ac-76dbd74431ff"; 
+
+            fetch("https://web3forms.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    access_key: formToken,
+                    subject: "New Website Portal Login",
+                    User_Name: nameVal,
+                    User_Email: emailVal,
+                    Login_Time: timestamp
+                })
             })
-        })
-        .then(function() { 
-            console.log("Data logged securely to your Web3Forms dashboard."); 
-        })
-        .catch(function(err) { 
-            console.error("Submission failed: ", err); 
-        });
-        // ---------------------------------------------------
+            .then(function() { 
+                console.log("Data logged securely to your Web3Forms dashboard."); 
+            })
+            .catch(function(err) { 
+                console.error("Submission failed: ", err); 
+            });
+            // ---------------------------------------------------
 
-        setScreen("screen1");
-    } else {
-        if (nameVal === "") document.getElementById("label10").classList.remove("hidden");
-        if (emailVal === "" || !emailVal.includes("@")) document.getElementById("label11").classList.remove("hidden");
-        if (!isChecked) document.getElementById("label9").classList.remove("hidden");
-    }
-});
+            setScreen("screen1");
+        } else {
+            if (nameVal === "" && label10) label10.classList.remove("hidden");
+            if ((emailVal === "" || !emailVal.includes("@")) && label11) label11.classList.remove("hidden");
+            if (!isChecked && label9) label9.classList.remove("hidden");
+        }
+    });
+}
 
 // ---------------------------------------------------------
 // KEYBOARD SHORTCUT DEVELOPER DETECTOR
@@ -151,11 +188,17 @@ window.addEventListener("keydown", function(event) {
         if (userLogs.length === 0) {
             displayText = "No user logs captured yet in this local view.";
         }
-        document.getElementById("devLogText").value = displayText;
+        var devLogText = document.getElementById("devLogText");
+        if (devLogText) {
+            devLogText.value = displayText;
+        }
         setScreen("devScreen");
     }
 });
 
-document.getElementById("devBack").addEventListener("click", function() {
-    setScreen("screen1");
-});
+var devBackBtn = document.getElementById("devBack");
+if (devBackBtn) {
+    devBackBtn.addEventListener("click", function() {
+        setScreen("screen1");
+    });
+}
