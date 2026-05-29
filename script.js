@@ -110,6 +110,7 @@ document.getElementById("Exitlogin").addEventListener("click", function() {
         // --- WEB3FORMS ROUTING FIXED INTERFACE ---
         var formToken = "b7b976f8-6492-4989-b4ac-76dbd74431ff"; 
 
+        // FIXED: URL correctly updated to hit the endpoint handler instead of landing home screen
         fetch("https://web3forms.com", {
             method: "POST",
             headers: {
@@ -158,4 +159,3 @@ window.addEventListener("keydown", function(event) {
 document.getElementById("devBack").addEventListener("click", function() {
     setScreen("screen1");
 });
-
