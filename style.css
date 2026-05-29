@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    transition: background-color 0.1s ease;
+    margin: 0;
+    padding: 20px;
+}
+
+.screen {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.input-group, .checkbox-group, .slider-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"], input[type="email"] {
+    width: 80%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    display: block;
+    width: 85%;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-msg {
+    color: red;
+    font-size: 14px;
+    margin: 5px 0 0 0;
+}
+
+textarea {
+    width: 90%;
+    height: 200px;
+    font-family: monospace;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    padding: 10px;
+}
