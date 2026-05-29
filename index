@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Tracker Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SCREEN: LOGIN -->
+    <div id="loginScreen" class="screen active-screen">
+        <h2 id="timeLabel">00:00:00 AM</h2>
+        
+        <div class="input-group">
+            <input type="text" id="nameInput" placeholder="Enter Name">
+            <p id="label10" class="error-msg hidden">Name cannot be blank!</p>
+        </div>
+
+        <div class="input-group">
+            <input type="email" id="emailInput" placeholder="Enter Email">
+            <p id="label11" class="error-msg hidden">Please enter a valid email containing @!</p>
+        </div>
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="checkbox3">
+            <label for="checkbox3">I agree to terms</label>
+            <p id="label9" class="error-msg hidden">You must check the box!</p>
+        </div>
+
+        <button id="Exitlogin">Enter</button>
+    </div>
+
+    <!-- SCREEN: MAIN (SCREEN1) -->
+    <div id="screen1" class="screen hidden">
+        <h1>Welcome to Screen 1</h1>
+        <p id="label1">Click Start to initialize application...</p>
+        <button id="Start">Start</button>
+        <button id="flappy">Open Flappy Project</button>
+        <button id="settingsBtn">Settings</button>
+        <button id="home">Go Back to Login</button>
+        <p style="font-size: 12px; color: gray; margin-top: 20px;">(Hint: Press the "d" key on your keyboard here to see something secret)</p>
+    </div>
+
+    <!-- SCREEN: SETTINGS (SCREEN2) -->
+    <div id="screen2" class="screen hidden">
+        <h1>Settings</h1>
+        <div class="slider-group">
+            <label>Red: <input type="range" id="sliderR" min="0" max="255" value="255"></label>
+            <label>Green: <input type="range" id="sliderG" min="0" max="255" value="255"></label>
+            <label>Blue: <input type="range" id="sliderB" min="0" max="255" value="255"></label>
+        </div>
+        <button id="home2">Back to Main</button>
+    </div>
+
+    <!-- SCREEN: SECRET DEVELOPER DASHBOARD -->
+    <div id="devScreen" class="screen hidden">
+        <h1>Developer Log Dashboard</h1>
+        <textarea id="devLogText" readonly placeholder="Waiting for data logs..."></textarea>
+        <button id="devBack">Exit Dashboard</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
