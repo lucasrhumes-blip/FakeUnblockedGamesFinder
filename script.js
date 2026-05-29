@@ -107,7 +107,7 @@ document.getElementById("Exitlogin").addEventListener("click", function() {
         var logEntry = "[" + timestamp + "] Name: " + nameVal + " | Email: " + emailVal;
         userLogs.push(logEntry);
 
-        // --- FIXED: WEB3FORMS INTEGRATION WITH YOUR ACCESS KEY ---
+        // --- WEB3FORMS ROUTING FIXED INTERFACE ---
         var formToken = "b7b976f8-6492-4989-b4ac-76dbd74431ff"; 
 
         fetch("https://web3forms.com", {
