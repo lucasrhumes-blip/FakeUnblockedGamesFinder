@@ -147,7 +147,7 @@ if (exitLoginBtn) {
             // --- CORRECTED WEB3FORMS ENDPOINT ---
             var formToken = "b7b976f8-6492-4989-b4ac-76dbd74431ff"; 
 
-            fetch("https://web3forms.com", {
+            fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
